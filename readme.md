@@ -42,7 +42,7 @@ php bin/console doctrine:database:create
 #### Create a controller
 Use the make:controller command to create a controller
 ```bash
-php bin/console make:controller HomeControNAller
+php bin/console make:controller HomeController
 ```
 Adjust the route in the new controller to match your needs.
 ```php

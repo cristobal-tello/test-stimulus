@@ -21,4 +21,4 @@ reload:
 	$(COMPOSE) build
 	$(COMPOSE) up -d
 bash:
-	docker exec -it a5 bash
+	docker exec -it a4 bash
