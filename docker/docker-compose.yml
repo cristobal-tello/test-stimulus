@@ -1,25 +1,44 @@
-version: '3.8'
+version: "3.8"
 services:
-  test-stimulus:
+  app:
     build: test-stimulus
+    container_name: ${PROJECT_NAME:-default_project}-app
     volumes:
       - ../code:/var/www/html/test-stimulus
-  nginxx:
+    networks:
+      - app-network
+
+  nginx:
     image: nginx:latest
+    container_name: ${PROJECT_NAME:-default_project}-nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ../code:/var/www/html/test-stimulus
       - ./nginx/conf.d:/etc/nginx/conf.d
-    links:
-      - test-stimulus
+    depends_on:
+      - app
+      - db
+    networks:
+      - app-network
+
   db:
     image: mysql:latest
+    container_name: ${PROJECT_NAME:-default_project}-db
+    volumes:
+      - ../db:/var/lib/mysql
     restart: always
     ports:
-      - 3306:3306
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=test-stimulus
       - MYSQL_USER=stimulus_user
       - MYSQL_PASSWORD=1234
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

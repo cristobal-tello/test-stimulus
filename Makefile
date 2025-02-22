@@ -7,18 +7,36 @@ COMPOSE=docker-compose -p "$(PROJECT_NAME)" -f docker/docker-compose.yml
 DOCKER_UID=$(USER_ID)
 DOCKER_GID=$(GROUP_ID)
 
-up:
-	$(COMPOSE) build
+
+start:
 	$(COMPOSE) up -d
+
+stop:
+	$(COMPOSE) stop
+	
+restart:
+	$(MAKE) stop && $(MAKE) start
+
 down:
-	$(COMPOSE) stop
-refresh:
 	$(COMPOSE) down
-	$(COMPOSE) build
-	$(COMPOSE) up -d
-reload:
-	$(COMPOSE) stop
-	$(COMPOSE) build
-	$(COMPOSE) up -d
+
 bash:
-	docker exec -it a4 bash
+	docker exec -it $(PROJECT_NAME)-app bash
+
+mysql_bash:
+	docker exec -it $(PROJECT_NAME)-db bash
+
+logs:
+	docker logs $(PROJECT_NAME)-app
+
+php-fpm_logs:
+	$(COMPOSE) logs php-fpm
+
+nginx_logs:
+	$(COMPOSE) logs nginx
+
+nginx_bash:
+	docker exec -it ${PROJECT_NAME}-nginx bash
+
+mysql_logs:
+	docker exec -it $(PROJECT_NAME)-db tail -n 100 /var/lib/mysql/general.log
