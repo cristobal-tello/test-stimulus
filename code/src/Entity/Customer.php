@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\CustomerRepository;
@@ -18,7 +20,6 @@ class Customer
 
     #[ORM\Column(length: 255)]
     private ?string $address = null;
-
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // src/Form/CityType.php
 
 namespace App\Form\Type;
@@ -11,7 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CityType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', EntityType::class, [
@@ -21,7 +23,7 @@ class CityType extends AbstractType
             ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => City::class,

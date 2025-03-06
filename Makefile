@@ -40,3 +40,12 @@ nginx_bash:
 
 mysql_logs:
 	docker exec -it $(PROJECT_NAME)-db tail -n 100 /var/lib/mysql/general.log
+
+code-format-check:
+	./vendor/bin/php-cs-fixer fix code/src --dry-run --verbose
+
+code-format-fix:
+	./vendor/bin/php-cs-fixer fix code/src --verbose
+
+code-analyse:
+	./vendor/bin/phpstan analyse code/src -c phpstan.dist.neon
