@@ -3,7 +3,7 @@
 declare(strict_types=1);
 // src/Form/CityType.php
 
-namespace App\Form\Type;
+namespace App\Form;
 
 use App\Entity\City;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

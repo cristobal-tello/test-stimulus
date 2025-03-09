@@ -100,3 +100,32 @@ php bin/console doctrine:migrations:migrate
 ## Forms
 
 composer require symfony/form
+
+## Asset-mapper
+
+composer require symonfy/asset-mapper
+
+# Logical path
+
+bin/console debug:asset
+
+eg:
+<img src="{{ asset('images/sample.jpg') }} " alt="sample image" width="25%" height="25%">
+
+# To compile assets:
+
+But only in production
+./bin/console asset-map:compile
+
+## Install Javascript npm packages
+
+.bin/console importmap:require <package-name>
+
+eg:
+
+./bin/console importmap:require js-confetti
+
+Packages are installed in assets/vendor folder.
+
+To install packages (when you clone the repository) run:
+.bin/console importmap:install

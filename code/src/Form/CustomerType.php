@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Form\Type;
+namespace App\Form;
 
 use App\Entity\City;
 use App\Entity\Customer;
