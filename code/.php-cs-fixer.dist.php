@@ -4,7 +4,7 @@ $finder = PhpCsFixer\Finder::create()
     ->ignoreDotFiles(false)
     ->ignoreVCSIgnored(true)
     ->in([
-        __DIR__ . '/code/src',
+        __DIR__ . '/src',
     ]);
 
 if (!file_exists(__DIR__ . '/var')) {

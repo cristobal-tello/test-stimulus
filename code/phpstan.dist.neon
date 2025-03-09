@@ -3,7 +3,7 @@ parameters:
     fileExtensions:
         - php
     paths:
-        - code/src
+        - src
     excludePaths:
-        - code/src/Kernel.php
+        - src/Kernel.php
     tmpDir: var/phpstan
