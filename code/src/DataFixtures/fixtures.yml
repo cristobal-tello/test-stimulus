@@ -1,0 +1,8 @@
+App\Entity\City:
+  city_{1..20}:
+    name: <Ciudad()>
+App\Entity\Customer:
+  customer_{1..20}:
+    name: "<firstName()> <lastName()>"
+    address: <streetAddress()>
+    city: "@city_<current()>"

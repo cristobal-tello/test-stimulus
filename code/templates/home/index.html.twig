@@ -1,14 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block sidebar %}
+	{% include 'home/_city_list.html.twig' %}
+{% endblock %}
 
-{% block body %}
 
-<img src="{{ asset('images/sample.jpg') }} " alt="sample image" width="25%" height="25%">
-    
-<a href="{{ path
-              ('app_customer_home') 
-              }}">
-              Customers
-          </a>
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block main %}
+	<h2 class="text-xl font-semibold mb-4">Content Area</h2>
+	<div id="content-details">
+		<table class="w-full border-collapse border border-blue-500 mt-16 mx-auto">
+			<thead>
+				<tr class="bg-blue-500 text-white">
+					<th class="py-2 px-4 text-left">Name</th>
+					<th class="py-2 px-4 text-left">City</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for customer in customers %}
+					<tr class="bg-white border-b border-blue-500">
+						<td class="py-2 px-4">{{ customer.Name }}</td>
+						<td class="py-2 px-4">{{ customer.City.Name }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
 {% endblock %}

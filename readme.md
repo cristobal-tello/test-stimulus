@@ -129,3 +129,17 @@ Packages are installed in assets/vendor folder.
 
 To install packages (when you clone the repository) run:
 .bin/console importmap:install
+
+## Tailwind bundle
+
+composer require symfonycasts/tailwind-bundle
+./bin/console tailwind:init
+./bin/console tailwind:build -w
+
+# Install fixtures
+
+composer require --dev doctrine/doctrine-fixtures-bundle nelmio/alice
+
+## Run fixtures
+
+./bin/console doctrine:fixtures:load

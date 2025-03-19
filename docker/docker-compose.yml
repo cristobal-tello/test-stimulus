@@ -19,23 +19,6 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - app
-      - db
-    networks:
-      - app-network
-
-  db:
-    image: mysql:latest
-    container_name: ${PROJECT_NAME:-default_project}-db
-    volumes:
-      - ../db:/var/lib/mysql
-    restart: always
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=test-stimulus
-      - MYSQL_USER=stimulus_user
-      - MYSQL_PASSWORD=1234
     networks:
       - app-network
 
