@@ -1,5 +1,5 @@
 parameters:
-    level: 1
+    level: 5
     fileExtensions:
         - php
     paths:
@@ -7,3 +7,5 @@ parameters:
     excludePaths:
         - src/Kernel.php
     tmpDir: var/phpstan
+    ignoreErrors:
+        - '#Property .*::\$id \(int\|null\) is never assigned int so it can be removed from the property type#'

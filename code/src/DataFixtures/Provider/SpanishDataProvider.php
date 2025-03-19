@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures\Provider;
 
 class SpanishDataProvider
@@ -8,8 +10,9 @@ class SpanishDataProvider
 
     public function Dni(): string
     {
-        $numbers = str_pad((string) random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
+        $numbers = (int) str_pad((string) random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
         $letter = self::DNI_LETTERS[$numbers % 23];
+
         return $numbers . $letter;
     }
 
@@ -114,7 +117,7 @@ class SpanishDataProvider
             'Granollers',
             'Motril',
             'Vélez-Málaga',
-            'Valdemoro'
+            'Valdemoro',
         ];
 
         return $cities[array_rand($cities)];

@@ -90,7 +90,7 @@
         ],
         "code-format-fix" :
         [
-            "./vendor/bin/php-cs-fixer fix code/src --verbose"
+            "./vendor/bin/php-cs-fixer fix src --verbose"
         ],
         "code-analyse" :
         [

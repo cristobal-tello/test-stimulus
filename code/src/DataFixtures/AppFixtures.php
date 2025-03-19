@@ -1,21 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
-use Faker\Generator;
-use Nelmio\Alice\Loader\NativeLoader;
-use Doctrine\Persistence\ObjectManager;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use App\DataFixtures\Provider\SpanishDataProvider;
-
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+use Nelmio\Alice\Loader\NativeLoader;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-
-
-        // This way it works, but I lost the localization 
+        // This way it works, but I lost the localization
         // then I need to use es_ES in each function on .yml file
         // $loader = new NativeLoader();
         // $f = $loader->getFakerGenerator();

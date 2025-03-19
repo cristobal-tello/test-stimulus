@@ -49,6 +49,6 @@ class CustomerController extends AbstractController
             ],
         );
 
-        return $this->redirectToRoute('app_customer_home');
+        //return $this->redirectToRoute('app_customer_home');
     }
 }

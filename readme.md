@@ -140,6 +140,10 @@ composer require symfonycasts/tailwind-bundle
 
 composer require --dev doctrine/doctrine-fixtures-bundle nelmio/alice
 
+# Format Providers
+
+https://fakerphp.org/formatters/
+
 ## Run fixtures
 
 ./bin/console doctrine:fixtures:load
