@@ -2,7 +2,13 @@
 <ul class="space-y-2">
 	{% for city in cities %}
 		<li>
-			<a href="#" class="block p-2 bg-white rounded hover:bg-gray-200" data-record-id="1">{{ city.name }}</a>
+			<a href="#" class="block p-4 bg-white rounded shadow-sm hover:bg-gray-100 hover:shadow-md transition duration-200 ease-in-out" data-record-id="{{ city.id }}" aria-label="View details for {{ city.name }}">
+				<span class="font-medium text-gray-800">{{ city.name }}</span>
+			</a>
+		</li>
+	{% else %}
+		<li>
+			<p class="text-gray-500 italic">No cities available.</p>
 		</li>
 	{% endfor %}
 </ul>

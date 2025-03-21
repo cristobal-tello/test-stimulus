@@ -1,5 +1,11 @@
-{{ form_start (customerForm) }}
-{{ form_widget(customerForm) }}
-<button type="submit" class="btn btn-primary">{{button_submit_label}}</button>
-<a href="{{ path ('app_customer_home') }}" class="btn btn-danger">Cancel</a>
+{{ form_start (customerForm, {'attr': {'class': 'space-y-6'}}) }}
+{{ form_widget(customerForm, {'attr': {'class': 'w-full'}}) }}
+<div class="flex space-x-4">
+	<button type="submit" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+		{{ button_submit_label }}
+	</button>
+	<a href="{{ path('app_customer_home') }}" class="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75">
+		Cancel
+	</a>
+</div>
 {{ form_end (customerForm) }}
