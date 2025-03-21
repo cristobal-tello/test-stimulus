@@ -151,3 +151,8 @@ https://fakerphp.org/formatters/
 # Tailwind form theme
 
 Use https://github.com/tales-from-a-dev/flowbite-bundle/blob/main/docs/index.md#installation
+
+# Ux autocomplete
+
+composer require symfony/ux-autocomplete
+bin/console importmap:require tom-select/dist/css/tom-select.default.css

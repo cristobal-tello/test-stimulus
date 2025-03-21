@@ -63,7 +63,7 @@ class CustomerController extends AbstractController
             $em->persist($customer);
             $em->flush();
 
-            return $this->redirectToRoute('app_customer_home');
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render(

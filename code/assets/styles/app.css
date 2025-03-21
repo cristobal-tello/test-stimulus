@@ -2,3 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Remove Tom Select border and box */
+.ts-wrapper {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* Style the Tom Select input to match other form fields */
+.ts-control {
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+    padding: 8px !important;
+    width: 100% !important;
+    background-color: white !important;
+}
+
+/* Remove the focus outline */
+.ts-control:focus {
+    box-shadow: none !important;
+    border-color: #aaa !important;
+}
+
+/* Customize dropdown list */
+.ts-dropdown {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    padding: 5px !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+}
+
+/* Style dropdown options */
+.ts-dropdown .option {
+    padding: 10px !important;
+    cursor: pointer !important;
+}
+
+/* Hover effect */
+.ts-dropdown .option:hover {
+    background-color: #f0f0f0 !important;
+}

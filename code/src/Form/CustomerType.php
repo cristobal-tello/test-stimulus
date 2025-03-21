@@ -23,6 +23,7 @@ class CustomerType extends AbstractType
                 'class' => City::class,
                 'choice_label' => 'name',
                 'placeholder' => 'Select a city',
+                'autocomplete' => true
             ])
         ;
     }
