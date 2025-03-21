@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 WORKDIR /var/www/html/test-stimulus
 ARG USER_ID=1000

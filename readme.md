@@ -147,3 +147,7 @@ https://fakerphp.org/formatters/
 ## Run fixtures
 
 ./bin/console doctrine:fixtures:load
+
+# Tailwind form theme
+
+Use https://github.com/tales-from-a-dev/flowbite-bundle/blob/main/docs/index.md#installation

@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\Customer;
 use App\Form\CustomerType;
 use App\Repository\CustomerRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CustomerController extends AbstractController
 {
@@ -42,13 +43,35 @@ class CustomerController extends AbstractController
         }
 
         return $this->render(
-            'customer/new_edit.html.twig',
+            'customer/new.html.twig',
             [
-                'titleForm' => 'Edit',
+                'titleForm' => 'Add',
                 'customerForm' => $form->createView(),
             ],
         );
 
         //return $this->redirectToRoute('app_customer_home');
+    }
+
+    #[Route('/customer/edit/{id}', name: 'app_customer_edit', methods: ['GET', 'POST'])]
+    public function editAction(Customer $customer, EntityManagerInterface $em, Request $request)
+    {
+        $form = $this->createForm(CustomerType::class, $customer);
+        $form->handleRequest($request);     // Get the values from the form ONLY ON POST
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($customer);
+            $em->flush();
+
+            return $this->redirectToRoute('app_customer_home');
+        }
+
+        return $this->render(
+            'customer/edit.html.twig',
+            [
+                'titleForm' => 'Edit',
+                'customerForm' => $form->createView(),
+            ],
+        );
     }
 }

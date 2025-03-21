@@ -1,0 +1,5 @@
+{{ form_start (customerForm) }}
+{{ form_widget(customerForm) }}
+<button type="submit" class="btn btn-primary">{{button_submit_label}}</button>
+<a href="{{ path ('app_customer_home') }}" class="btn btn-danger">Cancel</a>
+{{ form_end (customerForm) }}

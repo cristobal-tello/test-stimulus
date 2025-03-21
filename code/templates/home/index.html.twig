@@ -21,7 +21,9 @@
 			<tbody>
 				{% for customer in customers %}
 					<tr class="bg-white border-b border-blue-500">
-						<td class="py-2 px-4">{{ customer.Name }}</td>
+						<td class="py-2 px-4">
+							<a href="{{ path('app_customer_edit', {'id': customer.id}) }}" class="text-blue-500 hover:underline">{{ customer.Name }}</a>
+						</td>
 						<td class="py-2 px-4">{{ customer.City.Name }}</td>
 					</tr>
 				{% endfor %}
