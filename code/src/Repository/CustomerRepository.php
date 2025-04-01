@@ -47,4 +47,23 @@ class CustomerRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findBySearch($query, ?int $limit = null)
+    {
+        $qb = $this->createQueryBuilder('c');
+        if ($query) {
+            $qb->leftJoin('c.city', 'city')
+                ->addSelect('city')
+                ->orWhere('c.name LIKE :query')
+                ->orWhere('city.name LIKE :query')
+                ->setParameter('query', '%' . $query . '%');
+        }
+
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+
+        return $qb->getQuery()
+            ->getResult();
+    }
 }

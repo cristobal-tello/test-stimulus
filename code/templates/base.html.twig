@@ -1,59 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        
-        {% block stylesheets %}
-        {% endblock %}
-        
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-        
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-    </head>
-    <body class="bg-green-500">
-        {% block header %}
-            <header class="bg-blue-500 text-white p-4">
-                <div class="container mx-auto flex justify-between items-center">
-                    <h1 class="text-2xl font-semibold">My Application</h1>
-                    <nav>
-                        <ul class="flex space-x-4">
-                            {% block header_navigation_links %}
-                                <li><a href="#" class="hover:text-blue-200">Home</a></li>
-                                <li><a href="#" class="hover:text-blue-200">About</a></li>
-                                <li><a href="#" class="hover:text-blue-200">Contact</a></li>
-                            {% endblock %}
-                        </ul>
-                    </nav>
-                </div>
-            </header>
-        {% endblock %}
-        
-        <div class="container mx-auto mt-8 flex">
-            {% block body %}
-                <aside class="w-1/4 pr-4">
-                    {% block sidebar %}
-                    {% endblock %}
-                </aside>
-                <main class="w-3/4 bg-white rounded p-4">
-                    {% block main %}
-                        <h2 class="text-xl font-semibold mb-4">Content Area</h2>
-                        <div id="content-details">
-                            <p>Select a record from the sidebar to view details.</p>
-                        </div>
-                    {% endblock %}
-                </main>
-            {% endblock %}
-        </div>
-        {% block footer %}
-            <footer class="bg-gray-800 text-white p-4 mt-8">
-                <div class="container mx-auto text-center">
-                    <p>&copy; {{ "now"|date("Y") }} My Application. All rights reserved.</p>
-                </div>
-            </footer>
-        {% endblock %}
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}Welcome!{% endblock %}
+		</title>
+		{% block favicon %}
+			<link rel="icon" href="favicon.ico" type="image/x-icon">
+			<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		{% endblock %}
+		{% block stylesheets %}{% endblock %}
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body class="bg-green-500">
+		{% block header %}
+			<header class="bg-blue-500 text-white p-4">
+				<div class="container mx-auto flex justify-between items-center">
+					<h1 class="text-2xl font-semibold">My Application</h1>
+					<nav>
+						<ul class="flex space-x-4">
+							{% block header_navigation_links %}
+								<li>
+									<a href="#" class="hover:text-blue-200">Home</a>
+								</li>
+								<li>
+									<a href="#" class="hover:text-blue-200">About</a>
+								</li>
+								<li>
+									<a href="#" class="hover:text-blue-200">Contact</a>
+								</li>
+							{% endblock %}
+						</ul>
+					</nav>
+				</div>
+			</header>
+		{% endblock %}
+
+		<div class="container mx-auto mt-8 flex">
+			{% block body %}
+				<aside class="w-1/4 pr-4">
+					{% block sidebar %}{% endblock %}
+				</aside>
+				<main class="w-3/4 bg-white rounded p-4">
+					{% block search %}
+						<div class="mb-4">
+							<form
+								method="GET"
+								action="{{ path('app_home') }}"
+								class="mb-6 flex items-center"
+							>
+								<input
+									type="search"
+									name="query"
+									value="{{ app.request.query.get('query') }}"
+									aria-label="Search customers"
+									placeholder="Search customers"
+									class="w-3/4 px-4 py-2 rounded bg-white text-black border border-gray-300 placeholder-gray-500"
+								>
+								<button
+									type="submit"
+									class="ml-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+								>
+									Search
+								</button>
+								<div class="whitespace-nowrap m-2 ml-6">XXX results</div>
+							</form>
+						</div>
+					{% endblock %}
+					{% block main %}
+						<h2 class="text-xl font-semibold mb-4">Content Area</h2>
+						<div id="content-details">
+							<p>Select a record from the sidebar to view details.</p>
+						</div>
+					{% endblock %}
+				</main>
+			{% endblock %}
+		</div>
+		{% block footer %}
+			<footer class="bg-gray-800 text-white p-4 mt-8">
+				<div class="container mx-auto text-center">
+					<p>&copy; {{ "now"|date("Y") }} My Application. All rights reserved.</p>
+				</div>
+			</footer>
+		{% endblock %}
+	</body>
 </html>
