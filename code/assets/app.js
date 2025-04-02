@@ -9,6 +9,9 @@ import './styles/app.css';
 // import alienGretting from './lib/alien-greeting.js';
 // import JSConfetti from 'js-confetti'
 
+//import * as Turbo from '@hotwired/turbo';
+//Turbo.session.drive = false;    // Disable turbo
+
 // console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 // alienGretting("Hello", false);
 // const jsConfetti = new JSConfetti();
