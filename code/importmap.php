@@ -45,4 +45,7 @@ return [
         'version' => '2.4.3',
         'type' => 'css',
     ],
+    'debounce' => [
+        'version' => '2.2.0',
+    ],
 ];

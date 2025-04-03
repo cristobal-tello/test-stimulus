@@ -10,45 +10,45 @@
 
 {% block main %}
 	<h2 class="text-xl font-semibold mb-4">Content Area</h2>
-	<turbo-frame id="content-detils">
-	<div>
-		<table class="w-full border-collapse border border-blue-500 mx-auto rounded-lg overflow-hidden">
-			<thead>
-				<tr class="bg-blue-500 text-white">
-					<th class="py-2 px-4 text-left">Name</th>
-					<th class="py-2 px-4 text-left">City</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for customer in customers %}
-					<tr class="bg-white border-b border-blue-500">
-						<td class="py-2 px-4">
-							<a href="{{ path('app_customer_edit', {'id': customer.id}) }}" class="text-blue-500 hover:underline" target="_top">{{ customer.Name }}</a>
-						</td>
-						<td class="py-2 px-4">{{ customer.City.Name }}</td>
+	<turbo-frame id="content-details">
+		<div>
+			<table class="w-full border-collapse border border-blue-500 mx-auto rounded-lg overflow-hidden">
+				<thead>
+					<tr class="bg-blue-500 text-white">
+						<th class="py-2 px-4 text-left">Name</th>
+						<th class="py-2 px-4 text-left">City</th>
 					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		<div class="flex justify-between items-center mt-4">
-			{% if customers.hasPreviousPage %}
-				<a href="{{ pagerfanta_page_url(customers, customers.previousPage)}}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50">
-					Previous
-				</a>
-			{% endif %}
-			{% if customers.hasNextPage %}
-				<a href="{{ pagerfanta_page_url(customers, customers.nextPage)}}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50">
-					Next
-				</a>
-			{% endif %}
-			<div>
-				Pages
-				{{customers.currentPage}}
-				/
-				{{customers.nbPages}}
+				</thead>
+				<tbody>
+					{% for customer in customers %}
+						<tr class="bg-white border-b border-blue-500">
+							<td class="py-2 px-4">
+								<a href="{{ path('app_customer_edit', {'id': customer.id}) }}" class="text-blue-500 hover:underline" data-turbo-frame="_top">{{ customer.Name }}</a>
+							</td>
+							<td class="py-2 px-4">{{ customer.City.Name }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<div class="flex justify-between items-center mt-4">
+				{% if customers.hasPreviousPage %}
+					<a href="{{ pagerfanta_page_url(customers, customers.previousPage)}}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50">
+						Previous
+					</a>
+				{% endif %}
+				{% if customers.hasNextPage %}
+					<a href="{{ pagerfanta_page_url(customers, customers.nextPage)}}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50">
+						Next
+					</a>
+				{% endif %}
+				<div>
+					Pages
+					{{customers.currentPage}}
+					/
+					{{customers.nbPages}}
+				</div>
 			</div>
 		</div>
-	</div>
 	</turbo-frame>
 
 {% endblock %}

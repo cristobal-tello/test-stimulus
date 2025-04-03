@@ -4,7 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			{% block title %}Welcome!{% endblock %}
+			{% block title %}Welcome!
+			{% endblock %}
 		</title>
 		{% block favicon %}
 			<link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -49,23 +50,9 @@
 				<main class="w-3/4 bg-white rounded p-4">
 					{% block search %}
 						<div class="mb-4">
-							<form
-								method="GET"
-								action="{{ path('app_home') }}"
-								class="mb-6 flex items-center"
-							>
-								<input
-									type="search"
-									name="query"
-									value="{{ app.request.query.get('query') }}"
-									aria-label="Search customers"
-									placeholder="Search customers"
-									class="w-3/4 px-4 py-2 rounded bg-white text-black border border-gray-300 placeholder-gray-500"
-								>
-								<button
-									type="submit"
-									class="ml-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-								>
+							<form method="GET" action="{{ path('app_home') }}" class="mb-6 flex items-center" data-controller="autosubmit" data-turbo-frame="content-details">
+								<input type="search" data-action="autosubmit#debouncedSubmit" name="query" value="{{ app.request.query.get('query') }}" aria-label="Search customers" placeholder="Search customers" class="w-3/4 px-4 py-2 rounded bg-white text-black border border-gray-300 placeholder-gray-500">
+								<button type="submit" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
 									Search
 								</button>
 								<div class="whitespace-nowrap m-2 ml-6">XXX results</div>
@@ -84,7 +71,9 @@
 		{% block footer %}
 			<footer class="bg-gray-800 text-white p-4 mt-8">
 				<div class="container mx-auto text-center">
-					<p>&copy; {{ "now"|date("Y") }} My Application. All rights reserved.</p>
+					<p>&copy;
+						{{ "now"|date("Y") }}
+						My Application. All rights reserved.</p>
 				</div>
 			</footer>
 		{% endblock %}

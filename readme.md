@@ -161,3 +161,10 @@ bin/console importmap:require tom-select/dist/css/tom-select.default.css
 
 Add next packages
 composer require babdev/pagerfanta-bundle pagerfanta/doctrine-orm-adapter pagerfanta/twig
+
+# auto-submit
+
+https://github.com/itsameandrea/thirty_days_of_hotwire/blob/main/app/javascript/controllers/autosubmit_controller.js
+
+Install debounce package
+bin/console importmap:require debounce
