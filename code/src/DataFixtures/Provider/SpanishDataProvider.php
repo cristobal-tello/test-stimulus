@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace App\DataFixtures\Provider;
 
+use function array_rand;
+use function random_int;
+use function str_pad;
+
+use const STR_PAD_LEFT;
+
 class SpanishDataProvider
 {
     private const DNI_LETTERS = 'TRWAGMYFPDXBNJZSQVHLCKE';

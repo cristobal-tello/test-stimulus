@@ -156,3 +156,8 @@ Use https://github.com/tales-from-a-dev/flowbite-bundle/blob/main/docs/index.md#
 
 composer require symfony/ux-autocomplete
 bin/console importmap:require tom-select/dist/css/tom-select.default.css
+
+# Pagination
+
+Add next packages
+composer require babdev/pagerfanta-bundle pagerfanta/doctrine-orm-adapter pagerfanta/twig

@@ -6,15 +6,11 @@ namespace App\Repository;
 
 use App\Entity\Customer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Customer>
- *
- * @method Customer|null find($id, $lockMode = null, $lockVersion = null)
- * @method Customer|null findOneBy(array $criteria, array $orderBy = null)
- * @method Customer[]    findAll()
- * @method Customer[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CustomerRepository extends ServiceEntityRepository
 {
@@ -48,9 +44,13 @@ class CustomerRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    public function findBySearch($query, ?int $limit = null)
+    /**
+     * @param string $query
+     */
+    public function findBySearchQueryBuilder($query): QueryBuilder
     {
         $qb = $this->createQueryBuilder('c');
+
         if ($query) {
             $qb->leftJoin('c.city', 'city')
                 ->addSelect('city')
@@ -58,6 +58,18 @@ class CustomerRepository extends ServiceEntityRepository
                 ->orWhere('city.name LIKE :query')
                 ->setParameter('query', '%' . $query . '%');
         }
+
+        return $qb;
+    }
+
+    /**
+     * @param string $query
+     *
+     * @return Customer[] An array of Customer objects
+     */
+    public function findBySearch($query, ?int $limit = null): array
+    {
+        $qb = $this->findBySearchQueryBuilder($query);
 
         if ($limit) {
             $qb->setMaxResults($limit);

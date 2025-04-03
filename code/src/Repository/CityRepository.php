@@ -10,11 +10,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<City>
- *
- * @method City|null find($id, $lockMode = null, $lockVersion = null)
- * @method City|null findOneBy(array $criteria, array $orderBy = null)
- * @method City[]    findAll()
- * @method City[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CityRepository extends ServiceEntityRepository
 {
@@ -47,4 +42,15 @@ class CityRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    /**
+     * @return City[] An array of City objects
+     */
+    public function findAllByLimit(int $limit): array
+    {
+        return $this->createQueryBuilder('c')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }
